@@ -12,10 +12,18 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	var logger *zap.Logger
 
-	logger, err := zap.NewProduction()
-	if err != nil {
-		panic(err)
+	if cfg.DEBUG {
+		logger, err = zap.NewDevelopment()
+		if err != nil {
+			panic(err)
+		}
+	} else {
+		logger, err = zap.NewProduction()
+		if err != nil {
+			panic(err)
+		}
 	}
 
 	newApp, err := app.NewApp(logger, cfg)

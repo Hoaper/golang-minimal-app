@@ -20,6 +20,8 @@ type Config struct {
 		DBName   string `env:"DB_NAME"`
 		SSLMode  string `env:"DB_SSLMODE" env-default:"disable"`
 	}
+
+	DEBUG bool `env:"DEBUG" env-default:"false"`
 }
 
 var (
